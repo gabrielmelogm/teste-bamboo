@@ -49,12 +49,18 @@
   height: 4rem;
   border: 1px solid #d7d7d7;
   border-radius: 0.25rem;
+  background: transparent;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   transition: border-color 0.2s;
+
+  &:hover {
+    filter: brightness(0.9);
+    cursor: pointer;
+  }
 
   img {
     width: 20px;
@@ -69,10 +75,10 @@
   }
 }
 
-// .form_radio__button--deposit {
-//   background: var(--radio-deposit);
-// }
+.form_radio__button--active.form_radio__button--deposit {
+  background: var(--radio-deposit);
+}
 
-// .form_radio__button--withdraw {
-//   background: var(--radio-withdraw);
-// }
+.form_radio__button--active.form_radio__button--withdraw {
+  background: var(--radio-withdraw);
+}

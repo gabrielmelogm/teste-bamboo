@@ -8,8 +8,8 @@
   --text-body: #969cb3;
   --shape: #FFFFFF;
 
-  --radio-deposit: #33cc95;
-  --radio-withdraw: #e52e4d;
+  --radio-deposit: rgba(52, 152, 219, 0.1);
+  --radio-withdraw: rgba(229, 46, 77, 0.1);
 }
 
 html {

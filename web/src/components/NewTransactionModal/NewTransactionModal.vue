@@ -1,5 +1,4 @@
 <template>
-  <h2>Nova Transação</h2>
   <form class="form">
     <h2>Cadastrar transação</h2>
 
@@ -9,14 +8,20 @@
     <div class="form_radio">
       <button
         type="button"
-        activeColor="green"
         class="form_radio__button form_radio__button--deposit"
+        :class="{ 'form_radio__button--active': transactionType === 'deposit' }"
+        @click="changeTransactionType('deposit')"
       >
         <img src="../../assets/income.svg" alt="Entrada" />
         <span>Entrada</span>
       </button>
 
-      <button type="button" class="form_radio__button form_radio__button--withdraw">
+      <button
+        type="button"
+        class="form_radio__button form_radio__button--withdraw"
+        :class="{ 'form_radio__button--active': transactionType === 'withdraw' }"
+        @click="changeTransactionType('withdraw')"
+      >
         <img src="../../assets/outcome.svg" alt="Saída" />
         <span>Saída</span>
       </button>
@@ -29,3 +34,4 @@
 </template>
 
 <style lang="scss" src="./styles.scss"></style>
+<script lang="ts" src="./script.ts"></script>
