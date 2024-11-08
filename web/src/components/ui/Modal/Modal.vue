@@ -3,7 +3,7 @@
     <div class="modal__content">
       <slot></slot>
       <button @click="close" class="modal__close">
-        <img src="../assets/close.svg" alt="Close button" />
+        <img src="../../../assets/close.svg" alt="Close button" />
       </button>
     </div>
   </div>
@@ -42,41 +42,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
-.modal__overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.modal__content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  position: relative;
-  min-width: 300px;
-}
-
-.modal__close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 150ms ease;
-  color: var(--text-title);
-}
-
-.modal__close:hover {
-  filter: brightness(0.9);
-}
-</style>
+<style lang="scss" src="./styles.scss" scoped></style>

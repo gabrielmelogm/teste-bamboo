@@ -12,12 +12,12 @@
         activeColor="green"
         class="form_radio__button form_radio__button--deposit"
       >
-        <img src="../assets/income.svg" alt="Entrada" />
+        <img src="../../assets/income.svg" alt="Entrada" />
         <span>Entrada</span>
       </button>
 
       <button type="button" class="form_radio__button form_radio__button--withdraw">
-        <img src="../assets/outcome.svg" alt="Saída" />
+        <img src="../../assets/outcome.svg" alt="Saída" />
         <span>Saída</span>
       </button>
     </div>
