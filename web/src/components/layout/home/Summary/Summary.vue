@@ -19,7 +19,7 @@ export default defineComponent({
     <div>
       <header>
         <p>Entradas</p>
-        <img src="../../assets/income.svg" alt="Entradas" />
+        <img src="../../../../assets/income.svg" alt="Entradas" />
       </header>
       <strong>
         {{
@@ -33,7 +33,7 @@ export default defineComponent({
     <div>
       <header>
         <p>Saídas</p>
-        <img src="../../assets/outcome.svg" alt="Saídas" />
+        <img src="../../../../assets/outcome.svg" alt="Saídas" />
       </header>
       <strong>
         -
@@ -48,7 +48,7 @@ export default defineComponent({
     <div className="highlight-background">
       <header>
         <p>Total</p>
-        <img src="../../assets/total.svg" alt="Total" />
+        <img src="../../../../assets/total.svg" alt="Total" />
       </header>
       <strong>
         {{

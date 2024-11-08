@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import Modal from "../ui/Modal/Modal.vue";
+import Modal from "../../../ui/Modal/Modal.vue";
 import NewTransactionModal from "../NewTransactionModal/NewTransactionModal.vue";
 
 export default defineComponent({

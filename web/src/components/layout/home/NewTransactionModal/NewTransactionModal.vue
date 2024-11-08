@@ -12,7 +12,7 @@
         :class="{ 'form_radio__button--active': transactionType === 'deposit' }"
         @click="changeTransactionType('deposit')"
       >
-        <img src="../../assets/income.svg" alt="Entrada" />
+        <img src="../../../../assets/income.svg" alt="Entrada" />
         <span>Entrada</span>
       </button>
 
@@ -22,7 +22,7 @@
         :class="{ 'form_radio__button--active': transactionType === 'withdraw' }"
         @click="changeTransactionType('withdraw')"
       >
-        <img src="../../assets/outcome.svg" alt="Saída" />
+        <img src="../../../../assets/outcome.svg" alt="Saída" />
         <span>Saída</span>
       </button>
     </div>
