@@ -2,8 +2,8 @@
 </script>
 
 <template>
-	<header class="container">
-		<div class="content">
+	<header class="header__container">
+		<div class="header__content">
 			<h1 class="header__title">
 				<img src="../assets/logo-only.svg" alt="Logo" />
 				<span>Transações</span>
@@ -16,11 +16,11 @@
 </template>
 
 <style lang="scss" scoped>
-.container {
+.header__container {
 	background: var(--blue);
 }
 
-.content {
+.header__content {
 	max-width: 1120px;
 	margin: 0 auto;
 	padding: 2rem 1rem 12rem;
