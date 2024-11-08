@@ -1,0 +1,15 @@
+services:
+  db:
+    image: bitnami/postgresql:13.16.0
+    container_name: teste_bamboo-database
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=bamboo
+      - POSTGRES_PASSWORD=bamboo
+      - POSTGRES_DB=bamboo
+    volumes:
+      - db:/var/lib/postgresql/data
+
+volumes:
+  db:
