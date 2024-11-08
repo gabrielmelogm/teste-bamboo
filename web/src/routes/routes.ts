@@ -1,11 +1,16 @@
-import { createMemoryHistory, createRouter } from "vue-router";
+import { createMemoryHistory, createRouter, RouteRecordRaw } from "vue-router";
 import HomeView from "./HomeView.vue";
+import LoginView from "./LoginView.vue";
 
-const routes = [
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    component: HomeView
-  }
+    component: LoginView,
+  },
+  {
+    path: '/home',
+    component: HomeView,
+  },
 ]
 
 export const router = createRouter({
