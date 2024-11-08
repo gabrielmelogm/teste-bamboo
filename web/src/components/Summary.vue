@@ -1,3 +1,19 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "Summary",
+  data() {
+    return {
+      summary: {
+        deposits: 10000,
+        withdraws: 300,
+      },
+    };
+  },
+});
+</script>
+
 <template>
   <div class="summary__container">
     <div>
@@ -6,10 +22,12 @@
         <img src="../assets/income.svg" alt="Entradas" />
       </header>
       <strong>
-        <!-- {new Intl.NumberFormat('pt-BR', {
+        {{
+          new Intl.NumberFormat("pt-BR", {
             style: "currency",
-            currency: "BRL"
-          }).format(summary.deposits)} -->
+            currency: "BRL",
+          }).format(summary.deposits)
+        }}
       </strong>
     </div>
     <div>
@@ -18,10 +36,13 @@
         <img src="../assets/outcome.svg" alt="Saídas" />
       </header>
       <strong>
-        <!-- - {new Intl.NumberFormat('pt-BR', {
-              style: "currency",
-              currency: "BRL"
-          }).format(summary.withdraws)} -->
+        -
+        {{
+          new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(summary.withdraws)
+        }}
       </strong>
     </div>
     <div className="highlight-background">
@@ -30,13 +51,14 @@
         <img src="../assets/total.svg" alt="Total" />
       </header>
       <strong>
-        <!-- {new Intl.NumberFormat('pt-BR', {
-              style: "currency",
-              currency: "BRL"
-          }).format(summary.total)} -->
+        {{
+          new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(summary.deposits - summary.withdraws)
+        }}
       </strong>
     </div>
-
   </div>
 </template>
 
