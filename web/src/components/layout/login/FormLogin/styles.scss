@@ -86,6 +86,24 @@
       }
     }
 
+    .login__sign {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-title);
+
+      a {
+        text-decoration: underline;
+        transition: all 0.2s ease;
+        
+        &:hover {
+          cursor: pointer;
+          filter: brightness(0.7);
+        }
+      }
+    }
+
+
     .welcome {
       background: var(--blue);
       position: relative;
