@@ -1,17 +1,13 @@
 import z from "zod"
-import { defineComponent } from "vue";
-import { createUser } from "../../../../services/createUser.service";
+import { defineComponent, ref } from "vue";
+import FormSign from "../FormSign/FormSign.vue";
+import { login } from "../../../../services/login.service";
 
 const inputsSchema = z.object({
   username: z.string({
     required_error: "Usuário é obrigatório"
   }).min(1, {
     message: "Usuário é obrigatório"
-  }),
-  email: z.string({
-    required_error: "E-mail é obrigatório"
-  }).email({
-    message: "E-mail inválido"
   }),
   password: z.string({
     required_error: "Senha é obrigatório"
@@ -20,24 +16,36 @@ const inputsSchema = z.object({
   })
 })
 
+
 export default defineComponent({
-  name: "FormSign",
+  name: "FormLogin",
+  components: {
+    FormSign,
+  },
+  setup() {
+    const isSign = ref<boolean>(false);
+
+    function handleSign() {
+      isSign.value = true;
+    }
+
+    return {
+      isSign,
+      handleSign,
+    };
+  },
   data() {
     return {
       form: {
         username: '',
-        email: '',
         password: ''
-      },
-      submitted: false
+      }
     }
   },
   methods: {
     async handleSubmit() {
       const inputs = inputsSchema.parse(this.form)
-      this.submitted = true
-      await createUser(inputs)
-      window.location.reload()
+      await login(inputs)
     }
   }
-})
+});

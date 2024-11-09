@@ -6,7 +6,7 @@ interface CreateUserProps {
   password: string
 }
 
-interface CreateUserResponseProps extends CreateUserProps {
+export interface CreateUserResponseProps extends CreateUserProps {
   id: string
   createdAt: string
 }

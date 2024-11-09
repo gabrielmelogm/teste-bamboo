@@ -1,27 +1,3 @@
-<script lang="ts">
-import { defineComponent, ref } from "vue";
-import FormSign from "../FormSign/FormSign.vue";
-
-export default defineComponent({
-  name: "FormLogin",
-  components: {
-    FormSign,
-  },
-  setup() {
-    const isSign = ref<boolean>(false);
-
-    function handleSign() {
-      isSign.value = true;
-    }
-
-    return {
-      isSign,
-      handleSign,
-    };
-  },
-});
-</script>
-
 <template>
   <div class="login__container">
     <div class="main">
@@ -33,10 +9,20 @@ export default defineComponent({
         <div v-if="!isSign">
           <h2>Login</h2>
           <h3>Escolha como fazer login</h3>
-          <form>
+          <form @submit.prevent="handleSubmit">
             <div class="content-inputs">
-              <input type="text" name="username" placeholder="Usuário" />
-              <input type="password" name="password" placeholder="Senha" />
+              <input
+                type="text"
+                name="username"
+                placeholder="Usuário"
+                v-model="form.username"
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Senha"
+                v-model="form.password"
+              />
               <div class="login__sign">
                 <span>Não tem uma conta?</span>
                 <a @click="handleSign()">Crie uma conta</a>
@@ -64,3 +50,4 @@ export default defineComponent({
 </template>
 
 <style lang="scss" src="./styles.scss" scoped></style>
+<script lang="ts" src="./script.ts"></script>
