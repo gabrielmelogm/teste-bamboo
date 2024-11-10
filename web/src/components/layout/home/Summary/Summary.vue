@@ -1,14 +1,47 @@
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
+import { getTransactions } from "../../../../services/getTransactions.service";
+
+interface SummaryProps {
+  deposits: number;
+  withdraws: number;
+  total: number;
+}
 
 export default defineComponent({
   name: "Summary",
-  data() {
+  setup() {
+    const summary = ref<SummaryProps>({} as SummaryProps);
+
+    const fetchData = async () => {
+      const result = await getTransactions();
+
+      const summaryCalc = result.reduce(
+        (acc, transaction) => {
+          if (transaction.type === "deposit") {
+            acc.deposits += parseFloat(transaction.amount);
+            acc.total += parseFloat(transaction.amount);
+          } else {
+            acc.withdraws += parseFloat(transaction.amount);
+            acc.total -= parseFloat(transaction.amount);
+          }
+
+          return acc;
+        },
+        {
+          deposits: 0,
+          withdraws: 0,
+          total: 0,
+        }
+      );
+
+      summary.value = summaryCalc;
+    };
+
+    onMounted(fetchData);
+
     return {
-      summary: {
-        deposits: 10000,
-        withdraws: 300,
-      },
+      summary,
     };
   },
 });
@@ -55,7 +88,7 @@ export default defineComponent({
           new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL",
-          }).format(summary.deposits - summary.withdraws)
+          }).format(summary.total)
         }}
       </strong>
     </div>
