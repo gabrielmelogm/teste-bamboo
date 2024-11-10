@@ -1,29 +1,3 @@
-<script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
-import {
-  getTransactions,
-  TransactionProps,
-} from "../../../../services/getTransactions.service";
-
-export default defineComponent({
-  name: "TransactionsTable",
-  setup() {
-    const transactions = ref<TransactionProps[]>([]);
-
-    const fetchData = async () => {
-      const result = await getTransactions();
-      transactions.value = result;
-    };
-
-    onMounted(fetchData);
-
-    return {
-      transactions,
-    };
-  },
-});
-</script>
-
 <template>
   <div class="table__container">
     <table>
@@ -56,3 +30,4 @@ export default defineComponent({
 </template>
 
 <style lang="scss" src="./styles.scss" scoped></style>
+<script lang="ts" src="./script.ts"></script>
