@@ -28,7 +28,7 @@ export default defineComponent({
   <header class="header__container">
     <div class="header__content">
       <h1 class="header__title">
-        <img src="../assets/logo-only.svg" alt="Logo" />
+        <img src="../../../../assets/logo-only.svg" alt="Logo" />
         <span>Transações</span>
       </h1>
       <div>

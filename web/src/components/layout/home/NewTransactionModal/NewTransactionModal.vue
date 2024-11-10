@@ -1,15 +1,15 @@
 <template>
-  <form class="form">
+  <form class="form" @submit.prevent="handleSubmit()">
     <h2>Cadastrar transação</h2>
 
-    <input placeholder="Título" required />
-    <input type="number" placeholder="R$" required />
+    <input placeholder="Título" name="title" v-model="form.title" required />
+    <input type="number" placeholder="R$" name="amount" v-model="form.amount" required />
 
     <div class="form_radio">
       <button
         type="button"
         class="form_radio__button form_radio__button--deposit"
-        :class="{ 'form_radio__button--active': transactionType === 'deposit' }"
+        :class="{ 'form_radio__button--active': form.transactionType === 'deposit' }"
         @click="changeTransactionType('deposit')"
       >
         <img src="../../../../assets/income.svg" alt="Entrada" />
@@ -19,7 +19,7 @@
       <button
         type="button"
         class="form_radio__button form_radio__button--withdraw"
-        :class="{ 'form_radio__button--active': transactionType === 'withdraw' }"
+        :class="{ 'form_radio__button--active': form.transactionType === 'withdraw' }"
         @click="changeTransactionType('withdraw')"
       >
         <img src="../../../../assets/outcome.svg" alt="Saída" />
@@ -27,7 +27,7 @@
       </button>
     </div>
 
-    <input placeholder="Categoria" required />
+    <input placeholder="Categoria" name="category" v-model="form.category" required />
 
     <button type="submit">Cadastrar</button>
   </form>
