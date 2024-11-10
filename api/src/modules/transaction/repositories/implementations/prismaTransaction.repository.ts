@@ -13,6 +13,9 @@ export class PrismaTransactionRepository implements transactionRepository {
       where: {
         userId: userId,
       },
+			orderBy: {
+				createAt: 'desc'
+			}
     });
   }
 
