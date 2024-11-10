@@ -1,27 +1,22 @@
-<script>
-import { defineComponent } from "vue";
+<script lang="ts">
+import { defineComponent, onMounted, ref } from "vue";
+import {
+  getTransactions,
+  TransactionProps,
+} from "../../../../services/getTransactions.service";
 
 export default defineComponent({
   name: "TransactionsTable",
   setup() {
-    const transactions = [
-      {
-        id: "1",
-        title: "Petshop",
-        type: "withdraw",
-        amount: 300,
-        category: "Zeus",
-        createdAt: new Date().toISOString(),
-      },
-      {
-        id: "2",
-        title: "Freela",
-        type: "deposit",
-        amount: 10000,
-        category: "Freela",
-        createdAt: new Date().toISOString(),
-      },
-    ];
+    const transactions = ref<TransactionProps[]>([]);
+
+    const fetchData = async () => {
+      const result = await getTransactions();
+      transactions.value = result;
+    };
+
+    onMounted(fetchData);
+
     return {
       transactions,
     };
@@ -42,7 +37,7 @@ export default defineComponent({
       </thead>
 
       <tbody>
-        <tr :key="{ index }" v-for="(item, index) in transactions">
+        <tr v-for="item in transactions">
           <td>{{ item.title }}</td>
           <td>
             {{
@@ -53,7 +48,7 @@ export default defineComponent({
             }}
           </td>
           <td>{{ item.category }}</td>
-          <td>{{ new Intl.DateTimeFormat("pt-BR").format(new Date(item.createdAt)) }}</td>
+          <td>{{ new Intl.DateTimeFormat("pt-BR").format(item.createdAt) }}</td>
         </tr>
       </tbody>
     </table>

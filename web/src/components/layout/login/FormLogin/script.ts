@@ -2,6 +2,7 @@ import z from "zod"
 import { defineComponent, ref } from "vue";
 import FormSign from "../FormSign/FormSign.vue";
 import { login } from "../../../../services/login.service";
+import { router } from "../../../../routes/routes";
 
 const inputsSchema = z.object({
   username: z.string({
@@ -45,7 +46,13 @@ export default defineComponent({
   methods: {
     async handleSubmit() {
       const inputs = inputsSchema.parse(this.form)
-      await login(inputs)
+      try {
+        await login(inputs)
+        router.push('/home')
+      } catch (error) {
+        console.error(error)
+        alert("Erro inesperado ao fazer login")
+      }
     }
   }
 });
