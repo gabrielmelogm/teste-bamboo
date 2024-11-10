@@ -1,8 +1,11 @@
 import z from "zod"
-import { defineComponent, ref } from "vue";
+import Cookies from "js-cookie"
 import FormSign from "../FormSign/FormSign.vue";
+import { defineComponent, onMounted, ref } from "vue";
 import { login } from "../../../../services/login.service";
 import { router } from "../../../../routes/routes";
+import { getUser } from "../../../../utils/getUser";
+import axios from "axios";
 
 const inputsSchema = z.object({
   username: z.string({
@@ -24,6 +27,24 @@ export default defineComponent({
     FormSign,
   },
   setup() {
+    const token = Cookies.get('bamboo.token') as string
+
+    async function VerifyIsLogged() {
+      if (token) {
+        const user = getUser()
+        const response = await axios.get(`http://localhost:3333/users/${user.username}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+        if (response.status === 200) {
+          router.push('/home')
+        }
+      }
+    }
+
+    onMounted(VerifyIsLogged)
+
     const isSign = ref<boolean>(false);
 
     function handleSign() {
