@@ -14,6 +14,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: WEB
     permissions:
       contents: read
       packages: write
@@ -58,3 +59,11 @@ jobs:
           cache-to: type=gha,mode=max
           build-args: |
             VITE_API_URL=${{ secrets.VITE_API_URL }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    environment: WEB
+    needs: build
+    steps:
+      - name: "Trigger Portainer Deploy"
+        run: curl -X "POST" "${{secrets.SERVER_URL}}/${{env.CONTAINER_ID}}"

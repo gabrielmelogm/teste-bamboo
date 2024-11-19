@@ -10,10 +10,12 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: "${{ github.repository }}-api"
+  CONTAINER_ID: ${{ vars.CONTAINER_ID }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: API
     permissions:
       contents: read
       packages: write
@@ -57,10 +59,10 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-  # deploy:
-  #   runs-on: ubuntu-latest
-  #   environment: site
-  #   needs: build
-  #   steps:
-  #     - name: "Trigger Portainer Deploy"
-  #       run: curl -X "POST" "${{secrets.SERVER_URL}}/${{env.CONTAINER_ID}}"
+  deploy:
+    runs-on: ubuntu-latest
+    environment: API
+    needs: build
+    steps:
+      - name: "Trigger Portainer Deploy"
+        run: curl -X "POST" "${{secrets.SERVER_URL}}/${{env.CONTAINER_ID}}"
