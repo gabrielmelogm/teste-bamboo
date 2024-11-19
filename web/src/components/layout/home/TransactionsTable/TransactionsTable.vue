@@ -18,7 +18,7 @@
               new Intl.NumberFormat("pt-BR", {
                 style: "currency",
                 currency: "BRL",
-              }).format(item.amount)
+              }).format(parseFloat(item.amount))
             }}
           </td>
           <td>{{ item.category }}</td>

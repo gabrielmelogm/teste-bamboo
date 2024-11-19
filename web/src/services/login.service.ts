@@ -1,8 +1,9 @@
 import axios from "axios";
 import Cookies from "js-cookie"
+import { API_URL } from "../utils/getApiUrl";
 
 export async function login(user: { username: string, password: string }): Promise<string> {
-  const response = await axios.post('http://localhost:3333/auth/login', user)
+  const response = await axios.post(`${API_URL}/auth/login`, user)
   if (!response.data.token) {
     alert("Erro ao fazer login")
     return ''
