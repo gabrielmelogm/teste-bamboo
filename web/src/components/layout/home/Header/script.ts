@@ -1,11 +1,11 @@
 import { defineComponent, ref } from "vue";
-import Modal from "../../../ui/Modal/Modal.vue";
+import { Dialog } from "primevue";
 import NewTransactionModal from "../NewTransactionModal/NewTransactionModal.vue";
 
 export default defineComponent({
   name: "Header",
   components: {
-    Modal,
+    Dialog,
     NewTransactionModal,
   },
   setup() {

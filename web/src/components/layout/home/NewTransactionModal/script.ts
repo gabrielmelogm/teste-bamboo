@@ -1,4 +1,5 @@
 import { defineComponent, ref } from "vue";
+import { Button } from 'primevue'
 import { z } from "zod";
 import { createTransaction } from "../../../../services/createTransaction.service";
 
@@ -22,6 +23,9 @@ export type CreateTransactionProps = z.infer<typeof inputSchema>
 
 export default defineComponent({
   name: "NewTransactionModal",
+  components: {
+    Button
+  },
   data() {
     type TransactionType = "deposit" | "withdraw"
     const isLoading = ref<boolean>(false)

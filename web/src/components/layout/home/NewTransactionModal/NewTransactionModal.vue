@@ -1,7 +1,5 @@
 <template>
   <form class="form" @submit.prevent="handleSubmit()">
-    <h2>Cadastrar transação</h2>
-
     <input placeholder="Título" name="title" v-model="form.title" required />
     <input type="number" placeholder="R$" name="amount" v-model="form.amount" required />
 
@@ -29,7 +27,7 @@
 
     <input placeholder="Categoria" name="category" v-model="form.category" required />
 
-    <button type="submit">Cadastrar</button>
+    <Button type="submit">Cadastrar</Button>
   </form>
 </template>
 

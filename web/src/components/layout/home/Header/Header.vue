@@ -14,9 +14,9 @@
       </div>
     </div>
   </header>
-  <Modal v-model="isModalVisible">
+  <Dialog v-model:visible="isModalVisible" modal header="Cadastrar transação">
     <NewTransactionModal />
-  </Modal>
+  </Dialog>
 </template>
 
 <style lang="scss" scoped src="./styles.scss"></style>
