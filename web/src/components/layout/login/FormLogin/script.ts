@@ -6,6 +6,7 @@ import { login } from "../../../../services/login.service";
 import { router } from "../../../../routes/routes";
 import { getUser } from "../../../../utils/getUser";
 import axios from "axios";
+import { API_URL } from "../../../../utils/getApiUrl";
 
 const inputsSchema = z.object({
   username: z.string({
@@ -32,7 +33,7 @@ export default defineComponent({
     async function VerifyIsLogged() {
       if (token) {
         const user = getUser()
-        const response = await axios.get(`http://localhost:3333/users/${user.username}`, {
+        const response = await axios.get(`${API_URL}/users/${user.username}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
