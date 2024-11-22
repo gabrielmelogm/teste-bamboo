@@ -27,7 +27,7 @@
             <Button
               variant="text"
               icon="pi pi-ellipsis-v"
-              @click="selectItemMenu($event, item)"
+              @click="selectItemMenu($event)"
             >
             </Button>
             <Popover ref="op">

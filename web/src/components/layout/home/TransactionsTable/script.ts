@@ -1,5 +1,5 @@
 import NewTransactionModal from '../NewTransactionModal/NewTransactionModal.vue';
-import { Button, Popover, Dialog, Toast, ConfirmPopup, useConfirm, useToast } from 'primevue';
+import { Button, Popover, Dialog, Toast, ConfirmPopup } from 'primevue';
 import { defineComponent, onMounted, ref } from "vue";
 import {
   getTransactions,
@@ -18,7 +18,7 @@ export default defineComponent({
   },
   setup() {
     const op = ref();
-    const selectedItem = ref<TransactionProps | null>(null)
+    const selectedItem = ref<any>(null)
 
     const selectItemMenu = (event: any) => {
       op.value[0].show(event)
