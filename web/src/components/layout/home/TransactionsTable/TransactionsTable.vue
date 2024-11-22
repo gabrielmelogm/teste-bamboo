@@ -23,6 +23,22 @@
           </td>
           <td>{{ item.category }}</td>
           <td>{{ new Intl.DateTimeFormat("pt-BR").format(item.createdAt) }}</td>
+          <td>
+            <Button
+              variant="text"
+              icon="pi pi-ellipsis-v"
+              @click="selectItemMenu($event, item)"
+            >
+            </Button>
+            <Popover ref="op">
+              <div>
+                <ul class="table__list">
+                  <li class="table__item">Editar</li>
+                  <li class="table__item">Excluir</li>
+                </ul>
+              </div>
+            </Popover>
+          </td>
         </tr>
       </tbody>
     </table>

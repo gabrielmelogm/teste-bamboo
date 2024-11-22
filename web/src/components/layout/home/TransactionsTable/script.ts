@@ -1,3 +1,5 @@
+import Button from 'primevue/button';
+import Popover from 'primevue/popover';
 import { defineComponent, onMounted, ref } from "vue";
 import {
   getTransactions,
@@ -6,7 +8,17 @@ import {
 
 export default defineComponent({
   name: "TransactionsTable",
+  components: {
+    Button,
+    Popover
+  },
   setup() {
+    const op = ref();
+
+    const selectItemMenu = (event: any, transaction: TransactionProps) => {
+      op.value[0].show(event)
+    }
+
     const transactions = ref<TransactionProps[]>([]);
 
     const fetchData = async () => {
@@ -18,6 +30,8 @@ export default defineComponent({
 
     return {
       transactions,
+      op,
+      selectItemMenu
     };
   },
 });

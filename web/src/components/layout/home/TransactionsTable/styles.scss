@@ -34,3 +34,23 @@
     }
   }
 }
+.table__popover {
+}
+
+.table__list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.table__item {
+  padding: 1px 1rem 1px 1rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    filter: brightness(0.7);
+    cursor: pointer;
+  }
+}
