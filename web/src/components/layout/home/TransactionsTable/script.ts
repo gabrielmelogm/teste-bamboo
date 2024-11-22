@@ -1,5 +1,5 @@
 import NewTransactionModal from '../NewTransactionModal/NewTransactionModal.vue';
-import { Button, Popover, Dialog } from 'primevue';
+import { Button, Popover, Dialog, Toast, ConfirmPopup, useConfirm, useToast } from 'primevue';
 import { defineComponent, onMounted, ref } from "vue";
 import {
   getTransactions,
@@ -12,7 +12,9 @@ export default defineComponent({
     Button,
     Popover,
     Dialog,
-    NewTransactionModal
+    NewTransactionModal,
+    Toast,
+    ConfirmPopup,
   },
   setup() {
     const op = ref();
@@ -35,12 +37,35 @@ export default defineComponent({
       transactions,
       op,
       selectItemMenu,
-      selectedItem
+      selectedItem,
     };
   },
   methods: {
     handleClickEdit(transaction: TransactionProps) {
       this.selectedItem = transaction
+    },
+    handleClickDelete(event: any) {
+      this.$confirm.require({
+        target: event.currentTarget,
+        group: 'templating',
+        message: 'Você deseja excluir esse registro?',
+        icon: 'pi pi-exclamation-circle',
+        rejectProps: {
+          icon: 'pi pi-times',
+          label: 'Cancel',
+          outlined: true
+        },
+        acceptProps: {
+          icon: 'pi pi-check',
+          label: 'Confirm'
+        },
+        accept: () => {
+          this.$toast.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
+        },
+        reject: () => {
+          this.$confirm.close()
+        }
+      });
     }
   }
 });

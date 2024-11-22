@@ -34,7 +34,7 @@
               <div>
                 <ul class="table__list">
                   <li class="table__item" @click="handleClickEdit(item)">Editar</li>
-                  <li class="table__item">Excluir</li>
+                  <li class="table__item" @click="handleClickDelete($event)">Excluir</li>
                 </ul>
               </div>
             </Popover>
@@ -46,6 +46,15 @@
   <Dialog v-model:visible="selectedItem" modal header="Cadastrar transação">
     <NewTransactionModal :editData="selectedItem" />
   </Dialog>
+  <Toast />
+  <ConfirmPopup group="templating">
+    <template #message="slotProps">
+      <div class="table__confirm">
+        <i :class="slotProps.message.icon" class="text-6xl text-primary-500"></i>
+        <p>{{ slotProps.message.message }}</p>
+      </div>
+    </template>
+  </ConfirmPopup>
 </template>
 
 <style lang="scss" src="./styles.scss" scoped></style>

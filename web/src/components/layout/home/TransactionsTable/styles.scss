@@ -34,8 +34,6 @@
     }
   }
 }
-.table__popover {
-}
 
 .table__list {
   flex: 1;
@@ -54,4 +52,14 @@
     filter: brightness(0.7);
     cursor: pointer;
   }
+}
+
+.table__confirm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;  
+  margin-bottom: 1rem;
+  padding-bottom: 0;
 }
