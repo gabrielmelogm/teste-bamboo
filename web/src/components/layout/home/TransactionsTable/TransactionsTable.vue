@@ -33,7 +33,7 @@
             <Popover ref="op">
               <div>
                 <ul class="table__list">
-                  <li class="table__item">Editar</li>
+                  <li class="table__item" @click="handleClickEdit(item)">Editar</li>
                   <li class="table__item">Excluir</li>
                 </ul>
               </div>
@@ -43,6 +43,9 @@
       </tbody>
     </table>
   </div>
+  <Dialog v-model:visible="selectedItem" modal header="Cadastrar transação">
+    <NewTransactionModal :editData="selectedItem" />
+  </Dialog>
 </template>
 
 <style lang="scss" src="./styles.scss" scoped></style>

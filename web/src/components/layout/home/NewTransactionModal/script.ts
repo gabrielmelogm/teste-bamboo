@@ -1,7 +1,8 @@
-import { defineComponent, ref } from "vue";
+import { defineComponent, PropType, ref } from "vue";
 import { Button } from 'primevue'
 import { z } from "zod";
 import { createTransaction } from "../../../../services/createTransaction.service";
+import { TransactionProps } from "../../../../services/getTransactions.service";
 
 const inputSchema = z.object({
   title: z.string().min(1, {
@@ -26,6 +27,12 @@ export default defineComponent({
   components: {
     Button
   },
+  props: {
+    editData: {
+      type: Object as PropType<TransactionProps>,
+      required: false
+    }
+  },
   data() {
     type TransactionType = "deposit" | "withdraw"
     const isLoading = ref<boolean>(false)
@@ -37,10 +44,10 @@ export default defineComponent({
 
     return {
       form: {
-        title: '',
-        amount: '',
-        transactionType,
-        category: ''
+        title: this.editData?.title,
+        amount: this.editData?.amount,
+        transactionType: this.editData?.type || transactionType,
+        category: this.editData?.category
       },
       isLoading,
       changeTransactionType

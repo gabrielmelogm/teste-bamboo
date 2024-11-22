@@ -27,7 +27,7 @@
 
     <input placeholder="Categoria" name="category" v-model="form.category" required />
 
-    <Button type="submit">Cadastrar</Button>
+    <Button type="submit">{{ editData ? "Editar" : "Cadastrar" }}</Button>
   </form>
 </template>
 
